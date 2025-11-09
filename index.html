@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>mObywatel — Fistaszjo</title>
+  <style>
+    /* Prosty mobilny styl podobny do oryginału */
+    :root{
+      --bg:#f7f7f7;
+      --card:#ffffff;
+      --muted:#8a8a8a;
+      --accent:#0077cc;
+      --radius:14px;
+      --pad:18px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%; margin:0; background:var(--bg); color:#111}
+    .wrap{
+      max-width:480px;
+      margin:0 auto;
+      padding:24px 18px;
+      box-sizing:border-box;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+    }
+
+    header{
+      text-align:center;
+      margin-bottom:14px;
+    }
+    header h1{
+      margin:6px 0 2px;
+      font-weight:600;
+      font-size:20px;
+      color:#222;
+    }
+    header p{margin:0; color:var(--muted); font-size:13px}
+
+    .card{
+      background:var(--card);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+      margin-bottom:14px;
+    }
+
+    .instructions{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.4;
+      margin-bottom:10px;
+    }
+
+    form .field{
+      display:flex;
+      flex-direction:column;
+      margin-bottom:12px;
+    }
+    label{font-size:12px; color:var(--muted); margin-bottom:6px}
+    input[type="text"],
+    input[type="date"],
+    select,
+    button{
+      font-size:16px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid #e6e6e6;
+      background:white;
+      outline:none;
+      box-sizing:border-box;
+    }
+    input[type="file"]{
+      padding:8px 0;
+    }
+
+    .small{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .btn-row{
+      display:flex;
+      justify-content:center;
+      margin-top:8px;
+    }
+
+    button.primary{
+      background:var(--accent);
+      color:white;
+      border:0;
+      padding:12px 26px;
+      border-radius:22px;
+      font-weight:600;
+      box-shadow:0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    footer{
+      margin-top:auto;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      padding:18px 0 30px;
+    }
+
+    /* Responsywność */
+    @media(min-width:600px){
+      .wrap{padding:40px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>mObywatel (Fistaszjo)</h1>
+      <p>FistaszjoObywatel 4.2.0</p>
+    </header>
+
+    <div class="card">
+      <div class="instructions">
+        <strong>Instrukcja</strong>
+        <ul style="padding-left:18px;margin-top:8px">
+          <li><strong>Dla iOS:</strong> używaj Safari → uzupełnij dane → udostępnij → „Do ekranu głównego”.</li>
+          <li><strong>Dla Android:</strong> używaj Chrome → uzupełnij dane → 3 kropki → „Dodaj do ekranu głównego”.</li>
+        </ul>
+      </div>
+
+      <form id="regForm" onsubmit="event.preventDefault(); alert('Formularz wysłany (przykład)');">
+        <div style="text-align:center; margin-bottom:12px;">
+          <!-- Możesz zamienić src na rzeczywisty obrazek -->
+          <img src="https://fistaszjo.github.io/FistaszjoObywatel_6.9/assets/icon.png" alt="ikonka" style="max-width:120px; display:block; margin:0 auto 8px;">
+        </div>
+
+        <div class="field">
+          <label>Dodaj zdjęcie</label>
+          <input type="file" accept="image/*">
+        </div>
+
+        <div class="field">
+          <label>Imię (imiona) <span class="small">— To pole jest wymagane</span></label>
+          <input type="text" name="firstName" required>
+        </div>
+
+        <div class="field">
+          <label>Nazwisko <span class="small">— To pole jest wymagane</span></label>
+          <input type="text" name="lastName" required>
+        </div>
+
+        <div class="field">
+          <label>Płeć <span class="small">— To pole jest wymagane</span></label>
+          <select required>
+            <option value="">Wybierz...</option>
+            <option>Mężczyzna</option>
+            <option>Kobieta</option>
+            <option>Inna</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Obywatelstwo <span class="small">— To pole jest wymagane</span></label>
+          <input type="text" name="citizenship" required>
+        </div>
+
+        <div class="field">
+          <label>Data urodzenia (DD.MM.YYYY) <span class="small">— To pole jest wymagane</span></label>
+          <input type="date" name="dob" required>
+        </div>
+
+        <div class="field">
+          <label>Nazwisko rodowe</label>
+          <input type="text" name="birthLastName">
+        </div>
+
+        <div class="field">
+          <label>Nazwisko rodowe ojca</label>
+          <input type="text" name="fatherLastName">
+        </div>
+
+        <div class="field">
+          <label>Nazwisko rodowe matki</label>
+          <input type="text" name="motherLastName">
+        </div>
+
+        <div class="field">
+          <label>Miejsce zamieszkania</label>
+          <input type="text" name="residence">
+        </div>
+
+        <div class="field">
+          <label>Miejsce urodzenia <span class="small">— To pole jest wymagane</span></label>
+          <input type="text" name="birthplace" required>
+        </div>
+
+        <div class="field">
+          <label>Kraj urodzenia <span class="small">— To pole jest wymagane</span></label>
+          <input type="text" name="birthCountry" required>
+        </div>
+
+        <div class="field">
+          <label>Ulica i numer domu <span class="small">— To pole jest wymagane</span></label>
+          <input type="text" name="street" required>
+        </div>
+
+        <div class="field">
+          <label>Kod pocztowy <span class="small">— To pole jest wymagane</span></label>
+          <input type="text" name="zip" required>
+        </div>
+
+        <div class="field">
+          <label>Miasto <span class="small">— To pole jest wymagane</span></label>
+          <input type="text" name="city" required>
+        </div>
+
+        <div class="field">
+          <label>Data zameldowania na pobyt stały (DD.MM.YYYY)</label>
+          <input type="date" name="registeredDate">
+        </div>
+
+        <div class="btn-row">
+          <button class="primary" type="submit">wejdź</button>
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      Strona przykładowa — dostosowana do wyglądu oryginału. <!-- Źródło: odwiedzona strona. -->
+    </footer>
+  </div>
+</body>
+</html>
